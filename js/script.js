@@ -80,25 +80,36 @@ function toggleTheme() {
 // ===== CLOCK =====
 function updateClocks() {
   const now = new Date();
-  const localTimeEl = document.getElementById('localTime');
-  const nplTimeEl = document.getElementById('nplTime');
+  
+  // 1. Format Local Time String
+  const localStr = now.toLocaleTimeString('en-US', {
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+  });
 
-  // Local time
-  if (localTimeEl) {
-    localTimeEl.textContent = now.toLocaleTimeString('en-US', {
-      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
-    });
-  }
+  // 2. Format NPL Time (UTC + 5:45)
+  // Using Intl.DateTimeFormat is cleaner than manual offset math
+  const nplStr = now.toLocaleTimeString('en-US', {
+    timeZone: 'Asia/Kathmandu',
+    hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
+  });
 
-  // NPL = UTC+5:45
-  if (nplTimeEl) {
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const npl = new Date(utc + (5 * 3600000 + 45 * 60000));
-    nplTimeEl.textContent = npl.toLocaleTimeString('en-US', {
-      hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true
-    });
+  // 3. Update all elements (Desktop + Mobile)
+  const elements = {
+    'localTime': localStr,
+    'localTimeMobile': localStr,
+    'nplTime': nplStr,
+    'nplTimeMobile': nplStr
+  };
+
+  for (const [id, value] of Object.entries(elements)) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
   }
 }
+
+// Initialize the interval
+setInterval(updateClocks, 1000);
+updateClocks(); // Run immediately on load
 
 // ===== CONTACT FORM =====
 function initContactForm() {
