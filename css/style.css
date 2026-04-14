@@ -91,7 +91,7 @@ a:hover { text-decoration: underline; }
 
 .cursor {
   display: inline-block;
-  width: 10px;
+  width: 4px;
   height: 1.1em;
   background: var(--accent);
   vertical-align: text-bottom;

@@ -1,3 +1,28 @@
+function handleContact(e) {
+      e.preventDefault();
+      const name = document.getElementById('contactName').value.trim();
+      const email = document.getElementById('contactEmail').value.trim();
+      const message = document.getElementById('contactMessage').value.trim();
+
+      if (!name || !email || !message) {
+        showToast('⚠ Please fill all fields');
+        return;
+      }
+
+      const btn = e.target;
+      const orig = btn.innerHTML;
+      btn.innerHTML = '⟳ Sending...';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        showToast('✓ Message sent! I\'ll respond soon.');
+        document.getElementById('contactName').value = '';
+        document.getElementById('contactEmail').value = '';
+        document.getElementById('contactMessage').value = '';
+        btn.innerHTML = orig;
+        btn.disabled = false;
+      }, 1200);
+    }
 // ===== THEME MANAGEMENT =====
 const THEME_KEY = 'portfolio-theme';
 const THEME_AUTO = 'auto';
