@@ -290,6 +290,29 @@ main {
   line-height: 1.8;
 }
 
+.hero-content {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-photo {
+  flex-shrink: 0;
+}
+
+.hero-photo img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent);
+}
+
 .hero-buttons {
   display: flex;
   gap: 1rem;
@@ -731,10 +754,24 @@ footer {
   .projects-grid { grid-template-columns: 1fr; }
 
   .hero-title { font-size: 2rem; }
+
+  .hero-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .hero-photo img {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 @media (max-width: 480px) {
   .hero-buttons { flex-direction: column; }
   .btn { justify-content: center; }
   .resume-actions { flex-direction: column; }
+
+  .hero-content { flex-direction: column; }
+  .hero-photo { order: -1; }
+  .hero-photo img { width: 120px; height: 120px; }
 }
