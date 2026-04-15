@@ -61,19 +61,12 @@ function applyTheme(theme, isAuto = false) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  if (!saved || saved === THEME_AUTO) {
-    applyTheme(getAutoTheme(), true);
-  } else {
-    applyTheme(saved, false);
-  }
+  applyTheme(getAutoTheme(), true);
 }
 
 function toggleTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
   const isLight = document.body.classList.contains('light-mode');
   const newTheme = isLight ? 'dark' : 'light';
-  localStorage.setItem(THEME_KEY, newTheme);
   applyTheme(newTheme, false);
 }
 
@@ -239,7 +232,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollSpy();
   initResumePreview();
-
-  // Theme toggle
-  document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
 });
+
+// Theme toggle
+document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+document.getElementById('modeIndicator')?.addEventListener('click', toggleTheme);
