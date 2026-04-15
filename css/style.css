@@ -139,6 +139,15 @@ nav {
 .nav-logo .prompt { color: var(--accent); }
 .nav-logo .dot { color: var(--text-secondary); }
 
+.nav-name {
+  background: linear-gradient(45deg, var(--accent), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+  font-weight: 800;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -157,6 +166,12 @@ nav {
   color: var(--accent);
   background: var(--border-glow);
   text-decoration: none;
+}
+.nav-links a.active {
+  color: var(--accent);
+  background: var(--border-glow);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
 }
 
 .nav-right {
