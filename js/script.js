@@ -61,19 +61,12 @@ function applyTheme(theme, isAuto = false) {
 }
 
 function initTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
-  if (!saved || saved === THEME_AUTO) {
-    applyTheme(getAutoTheme(), true);
-  } else {
-    applyTheme(saved, false);
-  }
+  applyTheme(getAutoTheme(), true);
 }
 
 function toggleTheme() {
-  const saved = localStorage.getItem(THEME_KEY);
   const isLight = document.body.classList.contains('light-mode');
   const newTheme = isLight ? 'dark' : 'light';
-  localStorage.setItem(THEME_KEY, newTheme);
   applyTheme(newTheme, false);
 }
 
@@ -199,6 +192,21 @@ function initScrollSpy() {
   sections.forEach(s => observer.observe(s));
 }
 
+// ===== IMAGE LOADER =====
+function initImageLoader() {
+  const img = document.querySelector('.profile-photo');
+  const loader = document.querySelector('.image-loader');
+  if (!img || !loader) return;
+
+  img.onload = () => {
+    loader.style.display = 'none';
+  };
+  // If already loaded
+  if (img.complete) {
+    loader.style.display = 'none';
+  }
+}
+
 // ===== RESUME PREVIEW =====
 function initResumePreview() {
   const preview = document.getElementById('resumePreview');
@@ -239,7 +247,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollSpy();
   initResumePreview();
-
-  // Theme toggle
-  document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+  initImageLoader();
 });
+
+// Theme toggle
+document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
+document.getElementById('modeIndicator')?.addEventListener('click', toggleTheme);
