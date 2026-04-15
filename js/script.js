@@ -192,6 +192,21 @@ function initScrollSpy() {
   sections.forEach(s => observer.observe(s));
 }
 
+// ===== IMAGE LOADER =====
+function initImageLoader() {
+  const img = document.querySelector('.profile-photo');
+  const loader = document.querySelector('.image-loader');
+  if (!img || !loader) return;
+
+  img.onload = () => {
+    loader.style.display = 'none';
+  };
+  // If already loaded
+  if (img.complete) {
+    loader.style.display = 'none';
+  }
+}
+
 // ===== RESUME PREVIEW =====
 function initResumePreview() {
   const preview = document.getElementById('resumePreview');
@@ -232,6 +247,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initScrollSpy();
   initResumePreview();
+  initImageLoader();
 });
 
 // Theme toggle
