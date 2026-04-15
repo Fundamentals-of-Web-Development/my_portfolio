@@ -481,7 +481,13 @@ main {
   font-weight: 600;
   cursor: default;
   transition: all var(--transition);
-  border: 1px solid transparent;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  background-repeat: no-repeat;
+  background-position: left 6px center;
+  background-size: 16px;
+  padding-left: 28px;
 }
 .stack-tag:hover {
   transform: translateY(-2px);
@@ -489,26 +495,26 @@ main {
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
 }
 
-.tag-html    { background: #e34c26; color: #fff; }
-.tag-css     { background: #264de4; color: #fff; }
-.tag-js      { background: #f7df1e; color: #1a1a1a; }
-.tag-python  { background: #3572A5; color: #fff; }
-.tag-django  { background: #0C4B33; color: #fff; border: 1px solid #1a7a50; }
-.tag-mysql   { background: #00758f; color: #fff; }
-.tag-postgres{ background: #336791; color: #fff; }
-.tag-mongo   { background: #13aa52; color: #fff; }
-.tag-redis   { background: #DC382D; color: #fff; }
-.tag-docker  { background: #2496ED; color: #fff; }
-.tag-aws     { background: #FF9900; color: #1a1a1a; }
-.tag-github  { background: #333; color: #fff; }
-.tag-git     { background: #F05032; color: #fff; }
-.tag-rest    { background: #6DB33F; color: #fff; }
-.tag-graphql { background: #E10098; color: #fff; }
-.tag-node    { background: #339933; color: #fff; }
-.tag-selenium{ background: #43B02A; color: #fff; }
-.tag-kafka   { background: #231F20; color: #fff; border: 1px solid #555; }
-.tag-solana  { background: #9945FF; color: #fff; }
-.tag-fastapi { background: #009688; color: #fff; }
+.tag-html    { background-image: url('https://cdn.simpleicons.org/html5'); }
+.tag-css     { background-image: url('https://cdn.simpleicons.org/css3'); }
+.tag-js      { background-image: url('https://cdn.simpleicons.org/javascript'); }
+.tag-python  { background-image: url('https://cdn.simpleicons.org/python'); }
+.tag-django  { background-image: url('https://cdn.simpleicons.org/django'); }
+.tag-mysql   { background-image: url('https://cdn.simpleicons.org/mysql'); }
+.tag-postgres{ background-image: url('https://cdn.simpleicons.org/postgresql'); }
+.tag-mongo   { background-image: url('https://cdn.simpleicons.org/mongodb'); }
+.tag-redis   { background-image: url('https://cdn.simpleicons.org/redis'); }
+.tag-docker  { background-image: url('https://cdn.simpleicons.org/docker'); }
+.tag-aws     { background-image: url('https://cdn.simpleicons.org/amazonaws'); }
+.tag-github  { background-image: url('https://cdn.simpleicons.org/github'); }
+.tag-git     { background-image: url('https://cdn.simpleicons.org/git'); }
+.tag-rest    { background-image: url('https://cdn.simpleicons.org/rest'); }
+.tag-graphql { background-image: url('https://cdn.simpleicons.org/graphql'); }
+.tag-node    { background-image: url('https://cdn.simpleicons.org/nodedotjs'); }
+.tag-selenium{ background-image: url('https://cdn.simpleicons.org/selenium'); }
+.tag-kafka   { background-image: url('https://cdn.simpleicons.org/apachekafka'); }
+.tag-solana  { background-image: url('https://cdn.simpleicons.org/solana'); }
+.tag-fastapi { background-image: url('https://cdn.simpleicons.org/fastapi'); }
 
 /* ===== PROJECTS ===== */
 #projects { padding: 2rem 0 4rem; }
@@ -592,27 +598,61 @@ main {
 #resume { padding: 2rem 0 4rem; }
 
 .resume-container {
-  max-width: 1500px;
+  max-width: 1000px;
 }
 
 .resume-preview {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
-  padding: 0;
   overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  max-height: 800px;
+  transition: border-color var(--transition);
   margin-bottom: 1.25rem;
-  position: relative;
-  height: 600px;
 }
 
-.resume-preview embed {
+.resume-preview:hover {
+  border-color: var(--accent-glow);
+}
+
+.resume-window-header {
+  background: var(--bg-secondary);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.window-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.red { background: #ff5f56; }
+.yellow { background: #ffbd2e; }
+.green { background: #27c93f; }
+
+.window-title {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-family: inherit;
+  opacity: 0.8;
+}
+
+.resume-preview iframe {
   width: 100%;
-  height: 100%;
+  height: 700px;
   border: none;
+  filter: grayscale(0.1) contrast(1.1);
 }
 
 .resume-placeholder {
@@ -636,9 +676,9 @@ main {
 }
 
 .resume-actions {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 1rem;
-  flex-wrap: wrap;
 }
 
 .resume-cmd {
@@ -868,7 +908,7 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .resume-actions { flex-direction: column; }
+  .resume-actions { grid-template-columns: 1fr; }
 
   .hero-content { flex-direction: column; }
   .hero-photo { order: -1; }
