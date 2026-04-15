@@ -213,7 +213,7 @@ function initResumePreview() {
   if (!preview) return;
 
   const embed = document.createElement('embed');
-  embed.src = 'images/resume.pdf';
+  embed.src = '../images/resume.pdf';
   embed.type = 'application/pdf';
   embed.width = '100%';
   embed.height = '600';
