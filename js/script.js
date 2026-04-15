@@ -199,16 +199,19 @@ function initScrollSpy() {
   sections.forEach(s => observer.observe(s));
 }
 
-// ===== RESUME IFRAME =====
+// ===== RESUME PREVIEW =====
 function initResumePreview() {
   const preview = document.getElementById('resumePreview');
   if (!preview) return;
 
-  const iframe = document.createElement('iframe');
-  iframe.src = 'images/resume.pdf';
-  iframe.title = 'Resume Preview';
+  const embed = document.createElement('embed');
+  embed.src = 'images/resume.pdf';
+  embed.type = 'application/pdf';
+  embed.width = '100%';
+  embed.height = '600';
+  embed.style.border = 'none';
   preview.innerHTML = '';
-  preview.appendChild(iframe);
+  preview.appendChild(embed);
 
   iframe.onerror = () => {
     preview.innerHTML = `

@@ -219,6 +219,8 @@ nav {
   font-size: 1rem;
   transition: all var(--transition);
   flex-shrink: 0;
+  position: relative;
+  z-index: 11;
 }
 .theme-toggle:hover {
   border-color: var(--accent);
@@ -547,7 +549,7 @@ main {
 #resume { padding: 2rem 0 4rem; }
 
 .resume-container {
-  max-width: 800px;
+  max-width: 1500px;
 }
 
 .resume-preview {
@@ -556,16 +558,15 @@ main {
   border-radius: 12px;
   padding: 0;
   overflow: hidden;
-  aspect-ratio: 16/9;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 1.25rem;
   position: relative;
-  max-height: 450px;
+  height: 600px;
 }
 
-.resume-preview iframe {
+.resume-preview embed {
   width: 100%;
   height: 100%;
   border: none;
@@ -609,7 +610,7 @@ main {
 #contact { padding: 2rem 0 4rem; }
 
 .contact-form {
-  max-width: 560px;
+  max-width: 1500px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -744,12 +745,30 @@ footer {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  .nav-right { gap: 0.5rem; }
 
-  .time-section-mobile { display: block !important; position: sticky; top: 0; z-index: 10; }
-  .nav-right .time-display { display: none !important; }
-  .time-section-mobile .time-display { flex-direction: column; gap: 0.25rem; align-items: center; }
+  /* Hide the desktop clock */
+  .nav-right .time-display { 
+    display: none !important; 
+  }
 
+  /* Show the mobile clock section */
+  .time-section-mobile { 
+    display: block !important; 
+    margin-top: 60px; /* Pushes it below the fixed nav */
+    padding: 0.75rem 1rem;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .time-section-mobile .time-display { 
+    display: flex !important; /* Forces visibility */
+    justify-content: center;
+    gap: 0.75rem; 
+  }
+
+  .time-box {
+    min-width: 120px; /* Slightly wider for better spacing */
+  }
   .nav-links {
     display: none;
     position: absolute;
@@ -784,16 +803,23 @@ footer {
 }
 
 @media (max-width: 480px) {
-  .hero-buttons { flex-direction: column; }
-  .btn { justify-content: center; }
   .resume-actions { flex-direction: column; }
 
   .hero-content { flex-direction: column; }
   .hero-photo { order: -1; }
   .hero-photo img { width: 120px; height: 120px; }
 
-  .time-display { display: none; }
-  .time-section-mobile { display: none; }
+/* REMOVE 'display: none' from .time-display here */
+  .hero-buttons { flex-direction: column; }
+  .btn { justify-content: center; }
+  
+  /* Ensure the mobile time section stays visible */
+  .time-section-mobile { 
+    display: block !important; 
+  }
+  .time-section-mobile .time-display { 
+    display: flex !important; 
+  }
 }
 
 @media (min-width: 769px) {
