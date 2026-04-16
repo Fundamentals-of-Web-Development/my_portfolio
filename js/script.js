@@ -233,6 +233,102 @@ function initResumePreview() {
   };
 }
 
+// ===== TERMINAL PLAYGROUND =====
+function initTerminal() {
+  const input = document.getElementById('terminal-input');
+  const output = document.getElementById('terminal-output');
+  if (!input || !output) return;
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const command = input.value.trim();
+      if (command) {
+        executeCommand(command, output);
+        input.value = '';
+      }
+    }
+  });
+
+  // Focus input on click
+  document.querySelector('.terminal-body')?.addEventListener('click', () => {
+    input.focus();
+  });
+}
+
+function executeCommand(command, output) {
+  const cmd = command.toLowerCase().trim();
+  let response = '';
+
+  if (cmd === 'help') {
+    response = `Available commands:
+help          - Show this help
+projects --latest  - Display latest project
+socials       - Show social links
+clear         - Clear terminal
+
+Type a command and press Enter.`;
+  } else if (cmd === 'projects --latest') {
+    response = `Project: NPL Ticket Notifier
+Description: Real-time monitoring system that polls the Khalti events API for Nepal Premier League ticket availability. Sends instant Telegram notifications when tickets go live.
+Tech: Python, Telegram Bot API, Khalti API
+GitHub: https://github.com/prashannaLeo/NPL_Ticket_Notifier`;
+  } else if (cmd === 'socials') {
+    response =`┌─────────────┬──────────────────────────────────────────────────── ┐
+│ Platform    │ Link                                                │
+├─────────────┼──────────────────────────────────────────────────── ┤
+│ GitHub      │ https://github.com/prashannaleo                     │
+│ LinkedIn    │ https://www.linkedin.com/in/prashanna-dhami/        │
+└─────────────┴─────────────────────────────────────────────────────┘`;
+  } else if (cmd === 'clear') {
+    output.textContent = `Welcome to Prashanna's API Console!
+Type 'help' for available commands.
+
+>_`;
+    return;
+  } else {
+    response = `Command not found: ${command}
+Type 'help' for available commands.`;
+  }
+
+  // Append to output
+  const current = output.textContent.replace(/>_$/, '');
+  output.textContent = current + command + '\n' + response + '\n\n>_';
+  output.scrollTop = output.scrollHeight;
+}
+
+// ===== SKILL HOVER LOGS =====
+function initSkillLogs() {
+  const skills = document.querySelectorAll('.stack-tag');
+  skills.forEach(skill => {
+    const skillName = skill.textContent.toLowerCase().trim().split(' ')[0]; // Get first word
+    skill.addEventListener('mouseenter', () => showSkillLog(skillName));
+    skill.addEventListener('mouseleave', () => hideSkillLog());
+  });
+}
+
+function showSkillLog(skill) {
+  const output = document.getElementById('terminal-output');
+  if (!output) return;
+
+  let log = '';
+  switch(skill) {
+    case 'python':
+      log = '[INFO] Initializing Python environment... Success.';
+      break;
+    default:
+      log = `[INFO] Loading ${skill}... Ready.`;
+  }
+
+  // Append log
+  const current = output.textContent.replace(/>_$/, '');
+  output.textContent = current + log + '\n\n>_';
+  output.scrollTop = output.scrollHeight;
+}
+
+function hideSkillLog() {
+  // Leave the log
+}
+
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -248,6 +344,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollSpy();
   initResumePreview();
   initImageLoader();
+  initTerminal();
+  initSkillLogs();
 });
 
 // Theme toggle

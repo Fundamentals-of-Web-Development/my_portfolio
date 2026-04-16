@@ -139,6 +139,15 @@ nav {
 .nav-logo .prompt { color: var(--accent); }
 .nav-logo .dot { color: var(--text-secondary); }
 
+.nav-name {
+  background: linear-gradient(45deg, var(--accent), var(--blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 10px rgba(0, 255, 157, 0.3);
+  font-weight: 800;
+}
+
 .nav-links {
   display: flex;
   align-items: center;
@@ -157,6 +166,12 @@ nav {
   color: var(--accent);
   background: var(--border-glow);
   text-decoration: none;
+}
+.nav-links a.active {
+  color: var(--accent);
+  background: var(--border-glow);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 4px;
 }
 
 .nav-right {
@@ -457,6 +472,14 @@ main {
 .scroll-dot:nth-child(2) { animation-delay: 0.3s; opacity: 0.6; }
 .scroll-dot:nth-child(3) { animation-delay: 0.6s; opacity: 0.3; }
 
+.scroll-arrow {
+  font-size: 1.5rem;
+  color: var(--accent);
+  animation: scrollPulse 1.5s ease-in-out infinite;
+  animation-delay: 0.9s;
+  margin-top: 8px;
+}
+
 @keyframes scrollPulse {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(4px); }
@@ -598,7 +621,7 @@ main {
 #resume { padding: 2rem 0 4rem; }
 
 .resume-container {
-  max-width: 1000px;
+  max-width: 1500px;
 }
 
 .resume-preview {
@@ -688,6 +711,77 @@ main {
   font-style: italic;
 }
 .resume-cmd span { color: var(--accent); }
+
+/* ===== TERMINAL PLAYGROUND ===== */
+#terminal-playground { padding: 2rem 0 4rem; }
+
+.terminal-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.terminal-window {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.terminal-header {
+  background: var(--bg-secondary);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-body {
+  background: #0d1117;
+  color: #00ff9d;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  padding: 1rem;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-output {
+  flex: 1;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin: 0;
+  line-height: 1.4;
+  overflow-y: auto;
+  max-height: 400px;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  margin-top: 0.5rem;
+}
+
+.terminal-prompt {
+  color: var(--accent);
+  margin-right: 0.5rem;
+}
+
+.terminal-input {
+  background: transparent;
+  border: none;
+  color: #00ff9d;
+  font-family: inherit;
+  font-size: inherit;
+  flex: 1;
+  outline: none;
+}
+
+.terminal-input::placeholder {
+  color: #666;
+}
 
 /* ===== CONTACT ===== */
 #contact { padding: 2rem 0 4rem; }
