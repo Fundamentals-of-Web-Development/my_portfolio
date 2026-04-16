@@ -1,4 +1,4 @@
-# Prashanna Dhami — Terminal Portfolio
+# Prashanna Dhami Terminal Portfolio
 
 A terminal-style developer portfolio built with vanilla HTML, CSS, and JavaScript.
 
