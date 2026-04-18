@@ -180,31 +180,6 @@ function initImageLoader() {
   }
 }
 
-// ===== RESUME PREVIEW =====
-function initResumePreview() {
-  const preview = document.getElementById('resumePreview');
-  if (!preview) return;
-
-  const embed = document.createElement('embed');
-  embed.src = '../images/resume.pdf';
-  embed.type = 'application/pdf';
-  embed.width = '100%';
-  embed.height = '600';
-  embed.style.border = 'none';
-  preview.innerHTML = '';
-  preview.appendChild(embed);
-
-  iframe.onerror = () => {
-    preview.innerHTML = `
-      <div class="resume-placeholder">
-        <div class="resume-icon">&gt;_</div>
-        <div style="text-align:center">
-          <div style="color:var(--text-primary);font-size:0.9rem;font-weight:600">Resume Preview</div>
-          <div style="font-size:0.8rem;margin-top:4px">PDF Document</div>
-        </div>
-      </div>`;
-  };
-}
 
 // ===== TERMINAL PLAYGROUND =====
 function initTerminal() {
