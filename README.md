@@ -1,6 +1,6 @@
 # Prashanna Dhami Terminal Portfolio
 
-A terminal-style developer portfolio built with vanilla HTML, CSS, and JavaScript.
+A terminal-style developer portfolio built with HTML, CSS, and JavaScript.
 
 ## Project Structure
 
@@ -13,7 +13,6 @@ web-dev-project/
 │   └── script.js       # Theme, clock, form, nav logic
 ├── images/
 │   └── resume.pdf      # Prashanna's resume PDF
-└── pages/              # (reserved for future sub-pages)
 ```
 
 ## Features
