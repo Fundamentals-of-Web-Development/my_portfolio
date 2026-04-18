@@ -1073,6 +1073,9 @@ footer {
   .nav-right .time-display { 
     display: none !important; 
   }
+  .resume-preview {
+        height: 560px; /* Shorter height for mobile to allow easier scrolling */
+    }
 
   /* Show the mobile clock section */
   .time-section-mobile { 
