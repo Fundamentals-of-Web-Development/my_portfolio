@@ -102,40 +102,13 @@ function updateClocks() {
 
 // Initialize the interval
 setInterval(updateClocks, 1000);
-updateClocks(); // Run immediately on load
-
+updateClocks();
 // ===== CONTACT FORM =====
 function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const name = document.getElementById('contactName')?.value.trim();
-    const email = document.getElementById('contactEmail')?.value.trim();
-    const message = document.getElementById('contactMessage')?.value.trim();
-
-    if (!name || !email || !message) {
-      showToast('⚠ Please fill all fields');
-      return;
-    }
-
-    // Simulate send
-    const btn = form.querySelector('.btn-send');
-    if (btn) {
-      btn.textContent = '⟳ Sending...';
-      btn.disabled = true;
-    }
-
-    setTimeout(() => {
-      showToast('✓ Message sent successfully!');
-      form.reset();
-      if (btn) {
-        btn.textContent = '→ Send Message';
-        btn.disabled = false;
-      }
-    }, 1200);
-  });
+  form.addEventListener('submit', handleContact);
 }
 
 // ===== TOAST =====
@@ -274,11 +247,11 @@ Tech: Python, Telegram Bot API, Khalti API
 GitHub: https://github.com/prashannaLeo/NPL_Ticket_Notifier`;
   } else if (cmd === 'socials') {
     response =`┌─────────────┬──────────────────────────────────────────────────── ┐
-│ Platform    │ Link                                                │
-├─────────────┼──────────────────────────────────────────────────── ┤
-│ GitHub      │ https://github.com/prashannaleo                     │
-│ LinkedIn    │ https://www.linkedin.com/in/prashanna-dhami/        │
-└─────────────┴─────────────────────────────────────────────────────┘`;
+              │ Platform    │ Link                                                │
+              ├─────────────┼──────────────────────────────────────────────────── ┤
+              │ GitHub      │ https://github.com/prashannaleo                     │
+              │ LinkedIn    │ https://www.linkedin.com/in/prashanna-dhami/        │
+              └─────────────┴─────────────────────────────────────────────────────┘`;
   } else if (cmd === 'clear') {
     output.textContent = `Welcome to Prashanna's API Console!
 Type 'help' for available commands.

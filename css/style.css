@@ -215,11 +215,6 @@ nav {
   display: block;
   color: var(--text-primary);
 }
-.time-value {
-  color: var(--text-primary);
-  font-size: 0.75rem;
-  display: block;
-}
 
 /* Theme toggle */
 .theme-toggle {
