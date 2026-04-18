@@ -304,7 +304,7 @@ main {
 .hero-name {
   font-size: 1.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primry);
   margin-bottom: 0.5rem;
 }
 
@@ -1116,7 +1116,9 @@ footer {
   .projects-grid { grid-template-columns: 1fr; }
 
   .hero-title { font-size: 2rem; }
-
+.hero-name{
+  text-align: center;
+}
   .hero-content {
     flex-direction: column;
     gap: 1.5rem;
