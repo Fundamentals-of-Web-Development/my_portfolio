@@ -783,6 +783,77 @@ main {
   color: #666;
 }
 
+/* ===== AI/ML LAB ===== */
+#ai-lab { padding: 2rem 0 4rem; }
+
+.sprint-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.sprint-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  border-radius: 12px;
+  position: relative;
+  transition: transform var(--transition), border-color var(--transition);
+}
+
+.sprint-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.sprint-status {
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.sprint-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.sprint-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+  background: rgba(255, 255, 255, 0.05);
+  height: 8px;
+  border-radius: 10px;
+  position: relative;
+  overflow: visible;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--blue));
+  border-radius: 10px;
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+.progress-text {
+  position: absolute;
+  right: 0;
+  top: -20px;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
 /* ===== CONTACT ===== */
 #contact { padding: 2rem 0 4rem; }
 
