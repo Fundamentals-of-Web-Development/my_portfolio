@@ -108,7 +108,7 @@ function initContactForm() {
   const form = document.getElementById('contactForm');
   if (!form) return;
 
-  form.addEventListener('submit', handleContact(e), 1200);
+  form.addEventListener('submit', handleContact);
 }
 
 // ===== TOAST =====
