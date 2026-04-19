@@ -290,7 +290,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initMobileNav();
   initScrollSpy();
-  initResumePreview();
   initImageLoader();
   initTerminal();
   initSkillLogs();
