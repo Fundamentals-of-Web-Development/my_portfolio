@@ -1,6 +1,6 @@
 function handleContact(e) {
   e.preventDefault();
-  
+
   const name = document.getElementById('contactName').value.trim();
   const email = document.getElementById('contactEmail').value.trim();
   const message = document.getElementById('contactMessage').value.trim();
@@ -10,29 +10,40 @@ function handleContact(e) {
     return;
   }
 
-  const btn = e.target;
+  const form = e.target.closest('form');
+  const btn = form.querySelector('button[type="submit"]');
   const orig = btn.innerHTML;
   btn.innerHTML = '⟳ Sending...';
   btn.disabled = true;
 
-  // Send to Formspree
-  const form = event.target.closest('form');
   const formData = new FormData(form);
 
   fetch('https://formspree.io/f/mzdyzvkv', {
     method: 'POST',
-    body: formData
-  });
-
-  // Show success message
-  setTimeout(() => {
-    showToast('✓ Message sent! I\'ll respond soon.');
-    document.getElementById('contactName').value = '';
-    document.getElementById('contactEmail').value = '';
-    document.getElementById('contactMessage').value = '';
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      showToast('✓ Message sent! I\'ll respond soon.');
+      document.getElementById('contactName').value = '';
+      document.getElementById('contactEmail').value = '';
+      document.getElementById('contactMessage').value = '';
+    } else {
+      return response.json().then(data => {
+        throw new Error(data.error || 'Something went wrong');
+      });
+    }
+  })
+  .catch(error => {
+    showToast('✗ ' + (error.message || 'Something went wrong. Please try again.'));
+  })
+  .finally(() => {
     btn.innerHTML = orig;
     btn.disabled = false;
-  }, 1200);
+  });
 }
 // ===== THEME MANAGEMENT =====
 const THEME_KEY = 'portfolio-theme';
