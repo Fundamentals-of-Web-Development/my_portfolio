@@ -45,42 +45,6 @@ function handleContact(e) {
     btn.disabled = false;
   });
 }
-// ===== THEME MANAGEMENT =====
-const THEME_KEY = 'portfolio-theme';
-const THEME_AUTO = 'auto';
-
-function getAutoTheme() {
-  const hour = new Date().getHours();
-  return (hour >= 6 && hour < 18) ? 'light' : 'dark';
-}
-
-function applyTheme(theme, isAuto = false) {
-  const body = document.body;
-  const btn = document.getElementById('themeToggle');
-  const indicator = document.getElementById('modeIndicator');
-
-  if (theme === 'light') {
-    body.classList.add('light-mode');
-    if (btn) btn.textContent = '☀️';
-  } else {
-    body.classList.remove('light-mode');
-    if (btn) btn.textContent = '🌙';
-  }
-  if (indicator) {
-    indicator.textContent = isAuto ? 'auto' : 'manual';
-  }
-}
-
-function initTheme() {
-  applyTheme(getAutoTheme(), true);
-}
-
-function toggleTheme() {
-  const isLight = document.body.classList.contains('light-mode');
-  const newTheme = isLight ? 'dark' : 'light';
-  applyTheme(newTheme, false);
-}
-
 // ===== CLOCK =====
 function updateClocks() {
   const now = new Date();
@@ -290,13 +254,8 @@ function hideSkillLog() {
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
   updateClocks();
   setInterval(updateClocks, 1000);
-  setInterval(() => {
-    const saved = localStorage.getItem(THEME_KEY);
-    if (!saved || saved === THEME_AUTO) applyTheme(getAutoTheme(), true);
-  }, 60000);
 
   initContactForm();
   initMobileNav();
@@ -305,7 +264,3 @@ document.addEventListener('DOMContentLoaded', () => {
   initTerminal();
   initSkillLogs();
 });
-
-// Theme toggle
-document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-document.getElementById('modeIndicator')?.addEventListener('click', toggleTheme);
