@@ -196,12 +196,12 @@ Description: Real-time monitoring system that polls the Khalti events API for Ne
 Tech: Python, Telegram Bot API, Khalti API
 GitHub: https://github.com/prashannaLeo/NPL_Ticket_Notifier`;
   } else if (cmd === 'socials') {
-    response =`┌─────────────┬──────────────────────────────────────────────────── ┐
-              │ Platform    │ Link                                                │
-              ├─────────────┼──────────────────────────────────────────────────── ┤
-              │ GitHub      │ https://github.com/prashannaleo                     │
-              │ LinkedIn    │ https://www.linkedin.com/in/prashanna-dhami/        │
-              └─────────────┴─────────────────────────────────────────────────────┘`;
+    response = `┌─────────────┬────────────────────────────────────────────────────┐
+│ Platform    │ Link                                               │
+├─────────────┼────────────────────────────────────────────────────┤
+│ GitHub      │ https://github.com/prashannaleo                    │
+│ LinkedIn    │ https://www.linkedin.com/in/prashanna-dhami/       │
+└─────────────┴────────────────────────────────────────────────────┘`;
   } else if (cmd === 'clear') {
     output.textContent = `Welcome to Prashanna's API Console!
 Type 'help' for available commands.
